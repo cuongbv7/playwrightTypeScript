@@ -1,9 +1,11 @@
-to run with docker
-docker build -f ./Dockerfile -t playwrighttest .
-docker run --network host --rm -v $(pwd):/home/app/ --entrypoint npm playwrighttest run test
+To run with docker
 
-to run on BrowserStack:
+ 	docker build -f ./Dockerfile -t playwrighttest .
+	
+	docker run --network host --rm -v $(pwd):/home/app/ --entrypoint npm playwrighttest run test
 
-npm install
+To run on BrowserStack:
 
-npm run test:browser-stack
+	npm install
+
+	npm run test:browser-stack
