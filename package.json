@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test --project=chrome"
+    "test": "npx playwright test --project=chrome",
+    "test:browser-stack": "npx playwright test --config=./playwright-browserstack.config.ts",
+    "test:local": "BROWSERSTACK_LOCAL=true npx playwright test --config=./playwright-local.config.ts"   
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.30.0"
+    "@playwright/test": "^1.30.0",
+    "browserstack-local": "^1.4.8",
+    "global-agent": "^3.0.0"
   }
 }
