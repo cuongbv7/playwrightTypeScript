@@ -24,7 +24,6 @@ test.describe('New Todo', () => {
       TODO_ITEMS[0]
     ]);
 
-    // Create 2nd todo.
     await newTodo.fill(TODO_ITEMS[1]);
     await newTodo.press('Enter');
 
@@ -90,7 +89,6 @@ test.describe('Mark all as completed', () => {
 
   test('should allow me to clear the complete state of all items', async ({ page }) => {
     const toggleAll = page.getByLabel('Mark all as complete');
-    // Check and then immediately uncheck.
     await toggleAll.check();
     await toggleAll.uncheck();
 

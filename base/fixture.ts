@@ -8,6 +8,7 @@ const clientPlaywrightVersion = cp
 
 
 import * as BrowserStackLocal from 'browserstack-local'
+
 // BrowserStack Specific Capabilities.
 const caps = {
   browser: 'chrome',
