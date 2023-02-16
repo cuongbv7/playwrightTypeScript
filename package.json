@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx playwright test --project=chrome",
     "test:browser-stack": "npx playwright test --config=./playwright-browserstack.config.ts",
-    "test:local": "BROWSERSTACK_LOCAL=true npx playwright test --config=./playwright-local.config.ts"   
+    "test:local": "BROWSERSTACK_LOCAL=true npx tplaywright test --config=./playwright-local.config.ts"   
   },
   "keywords": [],
   "author": "",

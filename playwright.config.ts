@@ -36,8 +36,8 @@ export default defineConfig({
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     headless:true,
-    screenshot:"on",
-    video:"on",
+    screenshot:"off",
+    video:"off",
     baseURL:"https://bstackdemo.com",
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
