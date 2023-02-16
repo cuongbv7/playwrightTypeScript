@@ -2,6 +2,13 @@ pipeline {
     
     agent any
     tools {nodejs "Node"}
+    parameters {
+
+        booleanParam(name: 'runTest', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'BROWSER', choices: ['chrome', 'firefox', 'safari','all'], description: 'select browser to run')
+
+    }
 
     post {
         always {  
@@ -26,9 +33,12 @@ pipeline {
            }
        }
        stage('e2e Tests') {
-           steps {
+            when { 
+                expression { params.runTest==true}
+             }
+            steps {
                 echo 'running test'
-                sh 'npm run test'
+                sh 'npx playwright test --project=${params.BROWSER}'
            }
        }
        
