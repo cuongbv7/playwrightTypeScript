@@ -4,12 +4,16 @@ pipeline {
     tools {nodejs "Node"}
 
     post {
-        always {
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false,
-             keepAll: false, reportDir: 'playwright-report', 
-             reportFiles: 'index.html', reportName: 'HTML Report', 
-             reportTitles: '', 
-             useWrapperFileDirectly: true]) 
+        always {  
+            publishHTML target: [
+                reportName: 'Playwright',
+                reportDir: 'playwright-report',
+                reportFiles: 'index.html', 
+                reportTitles: 'Playwright demo', 
+                keepAll: true,
+                alwaysLinkToLastBuild: true,
+                allowMissing: false
+            ]  
         }
     }
 
