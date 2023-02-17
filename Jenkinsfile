@@ -37,8 +37,9 @@ pipeline {
                 expression { params.runTest==true}
              }
             steps {
-                echo 'running test'
-                sh 'npx playwright test --project=${params.BROWSER}'
+                echo "running test on ${params.BROWSER}"
+                
+                sh 'npx playwright test --project=${BROWSER}'
            }
        }
        
