@@ -3,32 +3,21 @@ pipeline {
     agent any
     tools {nodejs "Node"}
     parameters {
-
         booleanParam(name: 'runTest', defaultValue: true, description: 'Toggle this value')
-
         choice(name: 'BROWSER', choices: ['chrome', 'firefox', 'safari','all'], description: 'select browser to run')
-
     }
 
     post {
         always {  
-            publishHTML target: [
-                reportName: 'Playwright',
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html', 
-                reportTitles: 'Playwright demo', 
-                keepAll: true,
-                alwaysLinkToLastBuild: true,
-                allowMissing: false
-            ]  
+              allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
+
     }
 
     stages {
         stage('Dependencies') {
             steps {
                 echo 'installing dependencies'
-                sh 'npm i'
                 sh 'npm install'
            }
        }
@@ -38,8 +27,7 @@ pipeline {
              }
             steps {
                 echo "running test on ${params.BROWSER}"
-                
-                sh 'npx playwright test --project=${BROWSER}'
+                sh 'npx playwright test --project=${BROWSER} --reporter=line,allure-playwright'
            }
        }
        
