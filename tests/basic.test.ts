@@ -101,9 +101,7 @@ test.describe("test suite ",()=>{
         ]);
         
         const fileName = dowloadFile.suggestedFilename();
-        await dowloadFile.saveAs("download/"+fileName);
-          
-    
+        await dowloadFile.saveAs("download/"+fileName);    
     })
      
 

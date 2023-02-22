@@ -19,6 +19,12 @@ test.describe("add to cart function",()=>{
         const totalPriceCheckout = await (await (await homePage.selectListItems(selectedItems)).checkout()).getTotalPrice();
         expect(totalPriceCheckout).toEqual( homePage.totalPrice);
     }
+    )
 
+    test('should not allow me to display completed items', async ({homePage }) => {
+        let selectedItems:string[] = ["iPhone 13","iPhone 14"]
+        const totalPriceCheckout = await (await (await homePage.selectListItems(selectedItems)).checkout()).getTotalPrice();
+        expect(totalPriceCheckout).toEqual( homePage.totalPrice);
+    }
     )
 })

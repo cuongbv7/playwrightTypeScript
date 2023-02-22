@@ -6,13 +6,15 @@
   "scripts": {
     "test": "npx playwright test --project=chrome",
     "test:browser-stack": "npx playwright test --config=./playwright-browserstack.config.ts",
-    "test:local": "BROWSERSTACK_LOCAL=true npx tplaywright test --config=./playwright-local.config.ts"   
+    "test:local": "BROWSERSTACK_LOCAL=true npx tplaywright test --config=./playwright-local.config.ts"
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.30.0",
+    "allure-playwright": "^2.0.0",
     "browserstack-local": "^1.4.8",
     "global-agent": "^3.0.0"
   }

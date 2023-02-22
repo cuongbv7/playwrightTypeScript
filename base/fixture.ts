@@ -1,5 +1,6 @@
 import * as base from '@playwright/test'
 import * as cp from 'child_process'
+
 const clientPlaywrightVersion = cp
   .execSync('npx playwright --version')
   .toString()
