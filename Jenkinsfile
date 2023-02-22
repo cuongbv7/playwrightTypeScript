@@ -5,8 +5,7 @@ pipeline {
     parameters {
         booleanParam(name: 'runTest', defaultValue: true, description: 'Toggle this value')
         choice(name: 'BROWSER', choices: ['chrome', 'firefox', 'safari','all'], description: 'select browser to run')
-        string(name: 'NUM_OF_WORKERS',  defaultValue: '2', description: 'Number or process workers to run')
-
+        string(name: 'WORKERS',  defaultValue: '2', description: 'Number or process workers to run')
 
     }
 
@@ -46,7 +45,7 @@ pipeline {
              }
             steps {
                 echo "running test on ${params.BROWSER}"
-                sh 'npx playwright test --workers=${NUM_OF_WORKERS} --project=${BROWSER} --reporter=line,allure-playwright'
+                sh 'npx playwright test --workers=${WORKERS} --project=${BROWSER} --reporter=line,allure-playwright'
            }
        }
        
