@@ -1,17 +1,19 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page ,BrowserContext} from "playwright";
+import { BasePage } from "./basePage";
 
-export class checkOutPage {
+export class CheckOutPage extends BasePage {
     
-    private readonly page:Page;
     private readonly submitBtn:Locator;
     private readonly totalPrice:Locator;
 
-    constructor (page:Page){
-        this.page =page;
+    
+    constructor (page:Page,context:BrowserContext){
+        super(page,context);
         this.submitBtn = page.locator("#checkout-shipping-continue");
         this.totalPrice = page.locator(".cart-priceItem-value span");
     }
-     
+
+
     async submit() {
         await this.submitBtn.click();
     }
@@ -23,6 +25,6 @@ export class checkOutPage {
         }else{
             return -1;
         }
-   }
+    }
 
 }

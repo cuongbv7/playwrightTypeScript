@@ -1,15 +1,15 @@
-import { Locator, Page } from "@playwright/test";
-import { checkOutPage } from "./checkOutPage";
+import { BrowserContext,Page,Locator } from "playwright";
+import { BasePage } from "./basePage";
+import { CheckOutPage } from "./checkOutPage";
 
-export class homePage {
+export class HomePage extends BasePage {
     
     public  totalPrice:number=0;
 
-    private readonly page:Page;
-    private readonly checkoutBtn:Locator;
- 
-    constructor (page:Page){
-        this.page = page;
+    private  checkoutBtn:Locator;
+    
+    constructor (page:Page,browserContext:BrowserContext){
+        super(page,browserContext);
         this.checkoutBtn = page.locator(".buy-btn");
     }
 
@@ -25,7 +25,7 @@ export class homePage {
     async checkout(){
         await this.page.waitForLoadState("domcontentloaded")
         await this.checkoutBtn.click();
-        return new checkOutPage(this.page);
+        return new CheckOutPage(this.page,this.context);
     }
 
 
@@ -35,6 +35,6 @@ export class homePage {
         await this.page.locator(itemName).click();
         return Number(price);
     
-   } 
+    } 
 
 }

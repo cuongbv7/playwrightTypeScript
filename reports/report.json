@@ -1,0 +1,119 @@
+[
+  {
+    "description": "  As a customer\n  I want to able to select items and goto checkout page with correct total price",
+    "elements": [
+      {
+        "description": "",
+        "id": "select-items;order-success",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Order success",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 200362958
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "Customer has logged on to the application",
+            "match": {
+              "location": "src/steps/login.steps.ts:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5707534915
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "item"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "iPhone 12"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "iPhone 11"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 11,
+            "name": "She order below items in home page:",
+            "match": {
+              "location": "src/steps/order.steps.ts:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 563877875
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "Order page should be displayed with total price correctly",
+            "match": {
+              "location": "src/steps/order.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1421167
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7272624
+            },
+            "embeddings": [
+              {
+                "data": "Status: PASSED. Duration:0}s",
+                "mime_type": "text/plain"
+              }
+            ]
+          }
+        ],
+        "tags": [
+          {
+            "name": "@order",
+            "line": 1
+          },
+          {
+            "name": "@demo",
+            "line": 9
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "select-items",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Select items",
+    "tags": [
+      {
+        "name": "@order",
+        "line": 1
+      }
+    ],
+    "uri": "features/simple.feature"
+  }
+]
