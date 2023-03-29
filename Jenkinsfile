@@ -4,7 +4,7 @@ pipeline {
     tools {nodejs "Node"}
     parameters {
       //  booleanParam(name: 'runTest', defaultValue: true, description: 'Toggle this value')
-        choice (name: 'runOn', choices: ['local', 'browserStack'],defaultValue: 'local',description: 'select envinroment to run')
+        choice (name: 'runOn', choices: ['local', 'browserStack'],description: 'select envinroment to run')
         choice(name: 'BROWSER', choices: ['chrome', 'firefox', 'safari','all'], description: 'select browser to run')
         string(name: 'WORKERS',  defaultValue: '2', description: 'Number or process workers to run')
 
