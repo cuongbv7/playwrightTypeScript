@@ -10,6 +10,10 @@ const clientPlaywrightVersion = cp
 
 import * as BrowserStackLocal from 'browserstack-local'
 
+var username = process.env.BROWSERSTACK_USERNAME;
+var accessKey = process.env.BROWSERSTACK_ACCESS_KEY;
+var buildName = process.env.BROWSERSTACK_BUILD_NAME;
+
 // BrowserStack Specific Capabilities.
 const caps = {
   browser: 'chrome',
@@ -17,10 +21,9 @@ const caps = {
   os_version: 'catalina',
   name: 'My first playwright test',
   browser_version:'latest',
-  build: 'playwright-build-1',
-  'browserstack.username': process.env.BROWSERSTACK_USERNAME || 'vitcngbi_9My82d',
-  'browserstack.accessKey':
-    process.env.BROWSERSTACK_ACCESS_KEY || 'ypfk8SS6zCTmwfBgzJKs',
+  build: 'playwright-build-02',
+  'browserstack.username': username,
+  'browserstack.accessKey':accessKey,
   'browserstack.local': process.env.BROWSERSTACK_LOCAL || false,
   'client.playwrightVersion': clientPlaywrightVersion,
 };
@@ -29,7 +32,7 @@ exports.bsLocal = new BrowserStackLocal.Local();
 
 // replace YOUR_ACCESS_KEY with your key. You can also set an environment variable - "BROWSERSTACK_ACCESS_KEY".
 exports.BS_LOCAL_ARGS = {
-  key: process.env.BROWSERSTACK_ACCESS_KEY || 'ypfk8SS6zCTmwfBgzJKs',
+  key: process.env.BROWSERSTACK_ACCESS_KEY,
 };
 
 // Patching the capabilities dynamically according to the project name.

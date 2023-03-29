@@ -9,6 +9,8 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+
+
 export default defineConfig({
   testMatch:["/tests/pageObject.test.ts"],
   //testDir: './tests',
@@ -43,7 +45,8 @@ export default defineConfig({
           browserName: 'chromium',
           channel: 'chrome'
         },
-      },
+    }
+      /*,
       {
         name: 'chrome@latest-beta:OSX Big Sur@browserstack',
         use: {
@@ -72,6 +75,7 @@ export default defineConfig({
           // ...devices['iPhone 12 Pro Max'],
         },
       }
+      */
     
 
 
