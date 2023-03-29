@@ -54,12 +54,14 @@ pipeline {
             when { 
                 expression { params.runOn=='browserStack'}
             }
+            steps {
             browserstack(credentialsId: 'c2ac8705-48ce-474a-b784-9458cf229934') {
                  // add commands to run test
                  // Following are some of the example commands -----
                  echo 'running on browser stack'
                  sh 'npx playwright test --config=./playwright-browserstack.config.ts'
              }
+            }
        }
        
     }
