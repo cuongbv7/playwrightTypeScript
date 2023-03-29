@@ -5,9 +5,7 @@ pipeline {
     parameters {
       //  booleanParam(name: 'runTest', defaultValue: true, description: 'Toggle this value')
         choice (name: 'runOn', choices: ['local', 'browserStack'],description: 'select envinroment to run')
-        choice(name: 'BROWSER', choices: ['chrome', 'firefox', 'safari','all'], description: 'select browser to run')
-        string(name: 'WORKERS',  defaultValue: '2', description: 'Number or process workers to run')
-
+      
     }
 
  /*   post {
@@ -44,6 +42,8 @@ pipeline {
             when { 
                 expression { params.runOn=='local'}
              }
+            choice(name: 'BROWSER', choices: ['chrome', 'firefox', 'safari','all'], description: 'select browser to run')
+            string(name: 'WORKERS',  defaultValue: '2', description: 'Number or process workers to run')
             steps {
                 echo "running test on ${params.BROWSER}"
                 sh 'npx playwright test --workers=${WORKERS} --project=${BROWSER} --reporter=line,allure-playwright'
