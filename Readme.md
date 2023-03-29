@@ -6,3 +6,5 @@ To run on BrowserStack:
 
     npm install
     npm run test:browser-stack
+
+    

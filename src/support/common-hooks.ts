@@ -18,23 +18,12 @@ declare global {
   }
 }
 
-/*declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-
-  namespace NodeJS {
-    interface Global {
-      browser: ChromiumBrowser | FirefoxBrowser | WebKitBrowser;
-    }
-  }
-  
-}
-*/
 
 setDefaultTimeout(process.env.PWDEBUG ? -1 : config.defaultTimeout);
 
 BeforeAll(async function (this: ICustomWorld) {
   const commonBrowserOptions = {
-    headless: config.runHeadless,
+    headless:  config.runHeadless,
     slowMo: config.runSlow,
   };
 
@@ -53,6 +42,13 @@ BeforeAll(async function (this: ICustomWorld) {
 
     case 'webkit':
       global.browser = await webkit.launch(commonBrowserOptions);
+      break;
+
+    case 'chrome':
+      global.browser = await chromium.launch({
+        ...commonBrowserOptions,
+        channel:'chrome'
+      })
       break;
 
     default:

@@ -11,6 +11,8 @@ When('She order below items in home page:', async function (this: ICustomWorld,i
     for await (const itemT of items.hashes() ){
         selectedItems.push(itemT.item)
     }
+
+
     if (this.pagesObj!=undefined){
         totalPriceActual = await (await (await this.pagesObj.homePage.selectListItems(selectedItems)).checkout()).getTotalPrice();
         toalPriceExpected = this.pagesObj.homePage.totalPrice;
