@@ -45,6 +45,14 @@ export default defineConfig({
           browserName: 'chromium',
           channel: 'chrome'
         },
+    },
+    {
+      name: 'playwright-webkit@latest:OSX Big Sur@browserstack',
+      use: {
+        browserName: 'webkit',
+        // Config to use playwright emulated devices.
+         ...devices['iPhone 12 Pro Max'],
+      },
     }
       /*,
       {
