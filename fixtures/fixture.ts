@@ -7,7 +7,6 @@ const clientPlaywrightVersion = cp
   .trim()
   .split(' ')[1];
 
-
 import * as BrowserStackLocal from 'browserstack-local'
 
 var username = process.env.BROWSERSTACK_USERNAME;

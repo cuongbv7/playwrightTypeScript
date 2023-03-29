@@ -1,4 +1,4 @@
-import {test,expect} from "../base/pomFixture";
+import {test,expect} from "../fixtures/pomFixture";
 import * as credentialInfo from "../data/credential.json"
 
 

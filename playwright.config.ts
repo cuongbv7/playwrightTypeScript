@@ -36,7 +36,7 @@ export default defineConfig({
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
-    headless:false,
+    headless:true,
     screenshot:"only-on-failure",
     video:"retain-on-failure",
     baseURL:"https://bstackdemo.com",
