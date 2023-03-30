@@ -15,15 +15,14 @@ export class BasePage {
 
   public async goto(optionalUrl?: string) {
     const pageToGoTo :string = optionalUrl ? (config.baseUrl+optionalUrl) : config.baseUrl;
-    console.log("page is "+pageToGoTo)
     return await this.page.goto(pageToGoTo);
   }
 
-  
+
   public async screenshot(name: string){
     await console.log("name is: "+name)
     return await this.page.screenshot({ path: join('screenshots', `${name}.png`) });
   }
 
- 
+
 }

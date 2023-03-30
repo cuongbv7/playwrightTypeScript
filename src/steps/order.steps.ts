@@ -3,7 +3,7 @@ import { DataTable, Then, When } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
 let totalPriceActual:number;
-let toalPriceExpected:number;
+let totalPriceExpected:number;
 
 
 When('She order below items in home page:', async function (this: ICustomWorld,items:DataTable) {
@@ -12,15 +12,14 @@ When('She order below items in home page:', async function (this: ICustomWorld,i
         selectedItems.push(itemT.item)
     }
 
-
     if (this.pagesObj!=undefined){
         totalPriceActual = await (await (await this.pagesObj.homePage.selectListItems(selectedItems)).checkout()).getTotalPrice();
-        toalPriceExpected = this.pagesObj.homePage.totalPrice;
+        totalPriceExpected = this.pagesObj.homePage.totalPrice;
 
     }
 });
 
 Then('Order page should be displayed with total price correctly', async function (this: ICustomWorld) {
-    expect(totalPriceActual).toEqual( toalPriceExpected);
+    expect(totalPriceActual).toEqual(totalPriceExpected);
     
 });

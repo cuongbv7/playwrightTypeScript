@@ -11,14 +11,6 @@ const common = `
   --publish-quiet
   `;
 
-const getWorldParams = () => {
-  const params = {
-    foo: 'bar',
-  };
-
-  return `--world-parameters ${JSON.stringify({ params })}`;
-};
-
 module.exports = {
-  default: `${common} ${getWorldParams()}`,
+  default: `${common}`
 };

@@ -50,7 +50,7 @@ BeforeAll(async function (this: ICustomWorld) {
         channel:'chrome'
       })
       break;
-
+  
     default:
       global.browser = await chromium.launch({
         ...commonBrowserOptions,

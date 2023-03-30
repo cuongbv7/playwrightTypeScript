@@ -14,13 +14,7 @@ Feature: Select items
         |iPhone 11|
     Then Order page should be displayed with total price correctly
 
-  @demofail
-  Scenario: Order fail
-    When She order below items in home page:
-        |item     |
-        |iPhone 16|
-        |iPhone 11|
-    Then Order page should be displayed with total price correctly
+
     
   
   

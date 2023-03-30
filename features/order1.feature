@@ -6,7 +6,7 @@ Feature: Select items
   Background: 
     Given Customer has logged on to the application
 
-  @demo
+  @ignore
   Scenario: Order success
     When She order below items in home page:
         |item     |

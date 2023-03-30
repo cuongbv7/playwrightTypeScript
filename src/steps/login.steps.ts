@@ -8,9 +8,3 @@ Given('Customer has logged on to the application', async function (this: ICustom
     await this.pagesObj?.loginPage.login(credential.usrName,credential.passWord);
 });
 
-
-
-
-
-    
-
