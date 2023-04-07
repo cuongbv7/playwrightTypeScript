@@ -1,11 +1,13 @@
 node_modules/
-/test-results/
-/playwright-report/
-/playwright/.cache/
-/playwright/download/
-/allure-results/
-/allure-report/
-/reports/
+test-results/
+playwright-report/
+playwright/.cache/
+playwright/download/
+allure-results/
+allure-report/
+reports/
+screenshots/
+
 
 
 
