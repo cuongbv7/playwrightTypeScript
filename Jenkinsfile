@@ -29,6 +29,15 @@ pipeline {
     post {
         always {  
             allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+            publishHTML target: [
+                reportName: 'Playwright',
+                reportDir: 'playwright-report',
+                reportFiles: 'index.html', 
+                reportTitles: 'Playwright demo', 
+                keepAll: true,
+                alwaysLinkToLastBuild: true,
+                allowMissing: false
+            ]  
         }
 
     }
