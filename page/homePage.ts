@@ -10,7 +10,7 @@ export class homePage {
  
     constructor (page:Page){
         this.page = page;
-        this.checkoutBtn = page.locator(".buy-btn");
+        this.checkoutBtn =  page.getByText('Checkout');
     }
 
 
@@ -35,6 +35,6 @@ export class homePage {
         await this.page.locator(itemName).click();
         return Number(price);
     
-   } 
+} 
 
 }
