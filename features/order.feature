@@ -1,5 +1,5 @@
 @order
-Feature: Select items 
+Feature: Place order
   As a customer
   I want to able to select items and place a order with correct total price
 
@@ -20,7 +20,7 @@ Feature: Select items
 
 
 @regression
-  Scenario: Check when click to place order without fill shipping address
+  Scenario: Check when click to place order without filling shipping address
     When Customer has selected below items in home page and checkout:
         |item     |
         |iPhone 12|
