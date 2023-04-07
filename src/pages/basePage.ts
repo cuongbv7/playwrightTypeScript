@@ -20,7 +20,6 @@ export class BasePage {
 
 
   public async screenshot(name: string){
-    await console.log("name is: "+name)
     return await this.page.screenshot({ path: join('screenshots', `${name}.png`) });
   }
 

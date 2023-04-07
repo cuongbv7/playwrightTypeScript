@@ -27,18 +27,16 @@
     "type": "git",
     "url": "git+https://github.com/tallyb/cucumber7-playwright.git"
   },
-  "author": "Henri d'Orgeval",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/tallyb/cucumber-playwright/issues"
   },
   "homepage": "https://github.com/tallyb/cucumber-playwright#readme",
   "devDependencies": {
-    "@playwright/test": "^1.22.2",
+    "@playwright/test": "^1.30.0",
     "allure-playwright": "^2.0.0",
     "browserstack-local": "^1.4.8",
     "global-agent": "^3.0.0",
-    "playwright": "^1.22.2"
+    "playwright": "^1.30.0"
   },
   "dependencies": {
     "@cucumber/cucumber": "^8.11.1",

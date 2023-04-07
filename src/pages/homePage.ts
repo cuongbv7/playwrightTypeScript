@@ -10,7 +10,8 @@ export class HomePage extends BasePage {
     
     constructor (page:Page,browserContext:BrowserContext){
         super(page,browserContext);
-        this.checkoutBtn = page.locator(".buy-btn");
+        this.checkoutBtn =  page.getByText('Checkout');
+
     }
 
 
