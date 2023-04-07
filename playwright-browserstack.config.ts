@@ -26,12 +26,11 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
-   
+
     baseURL:"https://bstackdemo.com",
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
-   
   },
   reporter: 'html',
 
@@ -45,14 +44,6 @@ export default defineConfig({
           browserName: 'chromium',
           channel: 'chrome'
         },
-    },
-    {
-      name: 'playwright-webkit@latest:OSX Big Sur@browserstack',
-      use: {
-        browserName: 'webkit',
-        // Config to use playwright emulated devices.
-         ...devices['iPhone 12 Pro Max'],
-      },
     }
       /*,
       {

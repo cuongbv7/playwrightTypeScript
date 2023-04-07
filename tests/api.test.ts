@@ -10,7 +10,20 @@ const credentialInfor = {
 
 const fakePayloadOrders = { data: [], message: "No Orders" };
 
-test.describe("api testing ", () => {
+const fakePayloadProductEmpty ={"message":"No Product in Cart"};
+
+const fakePayloadCount = {"count":1,"message":"Cart Data Found"};
+
+
+const fakePayloadOrder =  {"products":[{"_id":"6262e95ae26b7e1a10e89bf0","productName":"zara coat 3","productCategory":"fashion","productSubCategory":"shirts",
+"productPrice":31500,"productDescription":"zara coat 3","productImage":"https://rahulshettyacademy.com/api/ecom/uploads/productImage_1650649434146.jpeg","productRating":"0","productTotalOrders":"0"
+,"productStatus":true,"productFor":"women","productAddedBy":"admin@gmail.com","__v":0}]
+,"count":1,"message":"Cart Data Found"}
+
+
+test.describe("mock api testing ", () => {
+    test.describe.configure({mode:'parallel'})
+
     let token: string;
 
     test.beforeAll(async () => {
@@ -21,7 +34,6 @@ test.describe("api testing ", () => {
 
     test("by pass login step ", async ({ page }) => {
         await page.addInitScript((value) => {
-
             window.localStorage.setItem("token", value);
         }, token)
 
@@ -46,16 +58,16 @@ test.describe("api testing ", () => {
             waitUntil: "networkidle"
         })
 
-        await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/63f1cbd4568c3e9fb11a40ef",
+        await page.route("**/api/ecom/user/get-cart-count/*",
             async (route) => {
                 //fetch orifinal response
                 let response = await page.request.fetch(route.request(),
                     {
-                        timeout: 120000
+                        timeout:120000
                     }
                 );
                 // console.log("method is "+await request.method())
-                let body = Buffer.from(JSON.stringify(fakePayloadOrders));
+                let body = Buffer.from(JSON.stringify(fakePayloadCount));
                 route.fulfill({
                     //pass all fields from the response
                     response,
@@ -65,15 +77,31 @@ test.describe("api testing ", () => {
                 })
             }
         )
-        await page.locator("button[routerlink*='myorders']").click();
+
+        await page.route("**/api/ecom/user/get-cart-products/*",
+        async (route) => {
+            //fetch orifinal response
+            let response = await page.request.fetch(route.request(),
+                {
+                    timeout:120000
+                }
+            );
+            // console.log("method is "+await request.method())
+            let body = Buffer.from(JSON.stringify(fakePayloadOrder));
+            route.fulfill({
+                //pass all fields from the response
+                response,
+                //override response body
+                body
+
+            })
+        }
+    )
+
+        await page.locator("button[routerlink*='/dashboard/cart']").click();
         await page.waitForLoadState("networkidle");
-        console.log(await page.locator(".mt-4").textContent())
-        //  await page.locator("tbody").waitFor();
-
-        //  const rows = await page.locator("tbody tr").all();
-
-
-
+        await expect (page.getByText("#6262e95ae26b7e1a10e89bf0",{exact:true})).toBeVisible();
+    
 
 
     }

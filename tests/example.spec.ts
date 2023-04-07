@@ -1,5 +1,4 @@
-import { test, expect } from '../base/fixture';
-
+import { test, expect } from '../fixtures/fixture'
 test('has title', async ({ page }) => {
   await page.goto('https://playwright.dev/');
 
@@ -11,7 +10,7 @@ test('get started link', async ({ page }) => {
   await page.goto('https://playwright.dev/');
 
   // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+  await page.getByRole('link', { name: 'get started' }).click();
 
   // Expects the URL to contain intro.
   await expect(page).toHaveURL(/.*intro/);
