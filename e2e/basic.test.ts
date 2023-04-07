@@ -13,7 +13,7 @@ test.describe("test suite ",()=>{
     test.beforeEach(()=>{
         
     })
-   
+
 
     test("tc01 ",async ()=>{ 
 
@@ -77,7 +77,6 @@ test.describe("test suite ",()=>{
         
         console.log(x.url);    
     
-           
 
     })
 
@@ -86,7 +85,7 @@ test.describe("test suite ",()=>{
         // [x] is same with x[0]
         
         await page.setInputFiles("input[type='file']",["upload/Lambdainfo.txt"]);
-              
+    
     })
 
     test ("tc 07 download Files", async () => {
@@ -103,8 +102,6 @@ test.describe("test suite ",()=>{
         const fileName = dowloadFile.suggestedFilename();
         await dowloadFile.saveAs("download/"+fileName);    
     })
-     
-
 })
 
 

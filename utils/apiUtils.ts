@@ -1,5 +1,5 @@
 import { APIRequestContext } from "@playwright/test";
-import { userInfo } from "./userInfo";
+import { userInfo } from "../model/userInfo";
 
 class ApiUtils {
 

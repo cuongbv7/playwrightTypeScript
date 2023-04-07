@@ -1,5 +1,5 @@
 import { test, expect, request } from "@playwright/test";
-import ApiUtils from "./utils/apiUtils";
+import ApiUtils from "../utils/apiUtils";
 
 
 

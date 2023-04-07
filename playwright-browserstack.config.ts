@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 
 export default defineConfig({
-  testMatch:["/tests/pageObject.test.ts"],
+  testMatch:["/e2e/pageObject.test.ts"],
   //testDir: './tests',
   /* Maximum time one test can run for. */
   timeout: 90000,
