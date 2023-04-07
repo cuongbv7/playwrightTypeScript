@@ -4,7 +4,7 @@
     "elements": [
       {
         "description": "",
-        "id": "select-items;check-order-success-when-fullfill-all-informations-in-shipping-address",
+        "id": "place-order;check-order-success-when-fullfill-all-informations-in-shipping-address",
         "keyword": "Scenario",
         "line": 10,
         "name": "Check order success when fullfill all informations in shipping address",
@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 415705165
+              "duration": 755676208
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5542669625
+              "duration": 6240246333
             }
           },
           {
@@ -60,7 +60,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 242287124
+              "duration": 241831416
             }
           },
           {
@@ -96,7 +96,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 323423916
+              "duration": 353760167
             }
           },
           {
@@ -109,7 +109,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27969000
+              "duration": 43124583
             }
           },
           {
@@ -122,7 +122,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 785524874
+              "duration": 784256915
             }
           },
           {
@@ -130,7 +130,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 66532833
+              "duration": 43029541
             },
             "embeddings": [
               {
@@ -154,17 +154,17 @@
       },
       {
         "description": "",
-        "id": "select-items;check-when-click-to-place-order-without-fill-shipping-address",
+        "id": "place-order;check-when-click-to-place-order-without-filling-shipping-address",
         "keyword": "Scenario",
         "line": 23,
-        "name": "Check when click to place order without fill shipping address",
+        "name": "Check when click to place order without filling shipping address",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 134418582
+              "duration": 120221625
             }
           },
           {
@@ -177,7 +177,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4484082500
+              "duration": 6208212291
             }
           },
           {
@@ -210,7 +210,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 239934958
+              "duration": 243581833
             }
           },
           {
@@ -223,7 +223,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 232832
+              "duration": 250124
             }
           },
           {
@@ -236,7 +236,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 287746915,
+              "duration": 288934792,
               "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at Proxy.<anonymous> (/Users/cuong.bui/Documents/02.PersonalProject/PlaywrighLearning/node_modules/@playwright/test/lib/expect.js:129:37)\n    at CustomWorld.<anonymous> (/Users/cuong.bui/Documents/02.PersonalProject/PlaywrighLearning/src/steps/order.steps.ts:44:95)"
             }
           },
@@ -245,7 +245,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 112745667
+              "duration": 92942541
             },
             "embeddings": [
               {
@@ -272,10 +272,10 @@
         "type": "scenario"
       }
     ],
-    "id": "select-items",
+    "id": "place-order",
     "line": 2,
     "keyword": "Feature",
-    "name": "Select items",
+    "name": "Place order",
     "tags": [
       {
         "name": "@order",
