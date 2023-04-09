@@ -16,20 +16,20 @@ export class loginPage {
     }
 
     async login(userName:string,passWord:string) {
-        await this.txtUserName.type(userName).then(async()=> await this.page.keyboard.press("Enter"));
-        await this.txtPassWord.type(passWord).then(async()=> await this.page.keyboard.press("Enter"));
+        await this.txtUserName.fill(userName).then(async()=> await this.page.keyboard.press("Enter"));
+        await this.txtPassWord.fill(passWord).then(async()=> await this.page.keyboard.press("Enter"));
         await Promise.all([
-             this.loginButton.click(),
-             this.page.waitForURL("https://bstackdemo.com/?signin=true",{
+            this.loginButton.click(),
+            this.page.waitForURL("https://bstackdemo.com/?signin=true",{
                 waitUntil:"networkidle"
-             })
+            })
         ])
-   }
+}
 
     async getUserInfo(locat: Locator){
         return await locat.textContent();
     }
 
-     
+    
 
 }

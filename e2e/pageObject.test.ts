@@ -5,7 +5,7 @@ import { ShippingAddressModel } from "../model/shippingAddressModel";
 let shipAddress: ShippingAddressModel;
 
 
-test.describe("add to cart function",()=>{
+test.describe("place order function",()=>{
 
     test.beforeEach(async ({page,loginPage,baseURL})=>{
         
@@ -13,7 +13,6 @@ test.describe("add to cart function",()=>{
         await loginPage.login(credentialInfo.usrName,credentialInfo.passWord);
         
     })
-
 
     test('check out success', async ({page,homePage,checkOutPage }) => {
         shipAddress = {
@@ -40,8 +39,7 @@ test.describe("add to cart function",()=>{
     }
     )
 
-
-    test('check out without filling shipping address', async ({page,homePage,checkOutPage }) => {
+    test('check out without filling shipping address', async ({page,homePage }) => {
         let selectedItems:string[] = ["iPhone 12","iPhone 11"]
         await (await homePage.selectListItems(selectedItems)).checkout();
         await expect(page.getByRole("button",{name:"Submit"})).toBeDisabled();

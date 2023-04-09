@@ -1,4 +1,5 @@
 import { test, expect } from '../fixtures/fixture'
+
 test('has title', async ({ page }) => {
   await page.goto('https://playwright.dev/');
 
