@@ -19,7 +19,7 @@ When('Customer has selected below items in home page and checkout:', async funct
     }
 });
 
-When('Shipping address is fulfilled with below informations:', async function (this: ICustomWorld,informations:DataTable) {
+When('Shipping address is fulfilled with following informations:', async function (this: ICustomWorld,informations:DataTable) {
     let shipingAdress:ShippingAddressModel;
     let infos = informations.hashes()[0];
     shipingAdress ={
@@ -35,13 +35,20 @@ When('Shipping address is fulfilled with below informations:', async function (t
 });
 
 Then('Customer should able to click the submit button to place this order', async function (this: ICustomWorld) {
-    const [request] = await Promise.all([
+    const [request,response] = await Promise.all([
         this.page?.waitForRequest(request => request.url() === 'https://bstackdemo.com/api/checkout',{
+            timeout:5000
+        }),
+        this.page?.waitForResponse(response => response.url() === 'https://bstackdemo.com/api/checkout',{
             timeout:5000
         }),
         this.pagesObj?.checkoutPage.submit(),
     ])
-    expect(request?.method()==="POST").toEqual(true);
+
+    expect(request?.method()==='POST').toEqual(true);
+    expect(response?.status()===200).toEqual(true);
+
+
 });
 
 

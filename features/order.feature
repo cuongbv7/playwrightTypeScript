@@ -6,13 +6,13 @@ Feature: Place order
   Background: 
     Given Customer has logged in to the application
 
-  @regression
+  @regression @smoke
   Scenario: Check order success when fullfill all informations in shipping address
     When Customer has selected below items in home page and checkout:
         |item     |
         |iPhone 12|
         |iPhone 11|
-    And Shipping address is fulfilled with below informations:
+    And Shipping address is fulfilled with following informations:
         |firstName|lastName |address |state  |postalCode|
         |John     |Doe      |Ha Dong |Ha Noi | 10000    |  
     Then Customer should able to click the submit button to place this order
