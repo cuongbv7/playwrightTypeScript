@@ -4,7 +4,7 @@ import { CheckOutPage } from "./checkOutPage";
 
 export class HomePage extends BasePage {
     
-    public  totalPrice:number=0;
+    public static  totalPrice:number=0;
 
     private  checkoutBtn:Locator;
     
@@ -18,7 +18,7 @@ export class HomePage extends BasePage {
     async selectListItems (itemList:string[]){
         for await (const item of itemList){
             const price =  await this.selectItem(item);
-            this.totalPrice+=  price;
+            HomePage.totalPrice+=  price;
         }
         return this;
     }

@@ -2,7 +2,7 @@ import { ICustomWorld } from '../support/custom-world';
 import { DataTable, Then, When} from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { ShippingAddressModel } from '../model/shippingAdressModel';
-
+import { HomePage } from '../pages/homePage';
 
 
 
@@ -11,6 +11,7 @@ When('Customer has selected below items in home page and checkout:', async funct
     for await (const itemT of items.hashes() ){
         selectedItems.push(itemT.item)
     }
+
     if (this.pagesObj!=undefined){
         await (await this.pagesObj.homePage.selectListItems(selectedItems)).checkout();
 
@@ -54,7 +55,7 @@ Then('Customer should able to click the submit button to place this order', asyn
 
 Then('The order should be successfully placed with correct total price', async function (this: ICustomWorld) {
     expect(await this.pagesObj?.checkoutPage.getConfirmMessage()).toEqual("Your Order has been successfully placed.");        
-    expect(await this.pagesObj?.checkoutPage.getTotalPrice()).toEqual(this.pagesObj?.homePage.totalPrice);    
+    expect(await this.pagesObj?.checkoutPage.getTotalPrice()).toEqual(HomePage.totalPrice);    
 });
 
 
