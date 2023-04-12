@@ -82,7 +82,6 @@ Before(async function (this: ICustomWorld, { pickle }: ITestCaseHookParameter) {
   });
   this.page = await this.context.newPage();
   this.pagesObj = new AllPagesObject(this.page, this.context);
-  console.log("running on tcs: "+pickle.tags[0].name);
   this.feature = pickle;
 });
 
@@ -91,7 +90,6 @@ After(async function (this: ICustomWorld, { result }: ITestCaseHookParameter) {
     await this.attach(`Status: ${result?.status}. Duration:${result.duration?.seconds}}s`);
 
     if (result.status === Status.FAILED) {
-      console.log("test fail")
       const image = await this.pagesObj?.basePage.screenshot(`${this.feature?.name}`);
       image && (await this.attach(image, 'image/png'));
     }

@@ -24,6 +24,7 @@ async login(userName: string, passWord: string) {
     this.loginButton.click(),
     this.page.waitForURL("https://bstackdemo.com/?signin=true", {
         waitUntil: "networkidle",
+        timeout:120000
     }),
     ]);
 }
