@@ -12,8 +12,8 @@ import { defineConfig, devices } from '@playwright/test';
 
 
 export default defineConfig({
-  testMatch:["/e2e/pageObject.test.ts"],
-  //testDir: './tests',
+  //testMatch:["/e2e/pageObject.test.ts"],
+  testDir: './e2e',
   /* Maximum time one test can run for. */
   timeout: 90000,
   expect: {
