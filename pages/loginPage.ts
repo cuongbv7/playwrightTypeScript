@@ -26,10 +26,5 @@ export class loginPage {
         ])
 }
 
-    async getUserInfo(locat: Locator){
-        return await locat.textContent();
-    }
-
-    
 
 }

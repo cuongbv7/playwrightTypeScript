@@ -1,8 +1,8 @@
 import { test as baseTest } from "./fixture";
 
-import { checkOutPage } from "../page/checkOutPage";
-import { homePage } from "../page/homePage";
-import { loginPage } from "../page/loginPage";
+import { checkOutPage } from "../pages/checkOutPage";
+import { homePage } from "../pages/homePage";
+import { loginPage } from "../pages/loginPage";
 
 type pages = {
     homePage: homePage;

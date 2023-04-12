@@ -1,8 +1,6 @@
 import {test,expect} from "../fixtures/pomFixture";
 import * as credentialInfo from "../data/credential.json"
-import { ShippingAddressModel } from "../model/shippingAddressModel";
 
-let shipAddress: ShippingAddressModel;
 
 
 test.describe("place order function",()=>{
@@ -14,8 +12,8 @@ test.describe("place order function",()=>{
         
     })
 
-    test('check out success', async ({page,homePage,checkOutPage }) => {
-        shipAddress = {
+    test('check out success', async ({page,homePage,checkOutPage,baseURL }) => {
+        let shipAddress = {
             firstName: 'John',
             lastName: 'Doe',
             address:'Ha Dong',
@@ -25,9 +23,9 @@ test.describe("place order function",()=>{
         
         let selectedItems:string[] = ["iPhone 12","iPhone 11"]
         await (await homePage.selectListItems(selectedItems)).checkout();
-        await checkOutPage.fillInformation(shipAddress);
+        await checkOutPage.fillShippingAddressInformation(shipAddress);
         const [request] = await Promise.all([
-            page.waitForRequest(request => request.url() === 'https://bstackdemo.com/api/checkout',{
+            page.waitForRequest(request => request.url() === baseURL+'/api/checkout',{
                 timeout:5000
             }),
             checkOutPage.submit(),
@@ -39,6 +37,7 @@ test.describe("place order function",()=>{
     }
     )
 
+
     test('check out without filling shipping address', async ({page,homePage }) => {
         let selectedItems:string[] = ["iPhone 12","iPhone 11"]
         await (await homePage.selectListItems(selectedItems)).checkout();
@@ -46,5 +45,11 @@ test.describe("place order function",()=>{
 
     }
     )
+
+    test.afterEach(async ({page})=>{
+        
+        page.close();
+        
+    })
 
 })

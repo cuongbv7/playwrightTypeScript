@@ -30,7 +30,7 @@ export class checkOutPage {
     }
 
 
-    async fillInformation(shipingAdress:ShippingAddressModel){
+    async fillShippingAddressInformation(shipingAdress:ShippingAddressModel){
         await this.firstName.fill(shipingAdress.firstName),
         await this.lastName.fill(shipingAdress.lastName),
         await this.address.fill(shipingAdress.address),

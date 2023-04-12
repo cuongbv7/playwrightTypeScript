@@ -1,0 +1,172 @@
+[
+  {
+    "description": "  As a customer\n  I want to able to select items and place a order with correct total price",
+    "elements": [
+      {
+        "description": "",
+        "id": "place-order;check-order-success-when-fullfill-all-informations-in-shipping-address",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Check order success when fullfill all informations in shipping address",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 778347541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "Customer has logged in to the application",
+            "match": {
+              "location": "src/steps/login.steps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4192908625
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "item"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "iPhone 12"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "iPhone 11"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 11,
+            "name": "Customer has selected below items in home page and checkout:",
+            "match": {
+              "location": "src/steps/order.steps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 241698834
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "firstName",
+                      "lastName",
+                      "address",
+                      "state",
+                      "postalCode"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "John",
+                      "Doe",
+                      "Ha Dong",
+                      "Ha Noi",
+                      "10000"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 15,
+            "name": "Shipping address is fulfilled with following informations:",
+            "match": {
+              "location": "src/steps/order.steps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 319511415
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "Customer should able to click the submit button to place this order",
+            "match": {
+              "location": "src/steps/order.steps.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 241446541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "The order should be successfully placed with correct total price",
+            "match": {
+              "location": "src/steps/order.steps.ts:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 280046207
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 24321915
+            },
+            "embeddings": [
+              {
+                "data": "Status: PASSED. Duration:0}s",
+                "mime_type": "text/plain"
+              }
+            ]
+          }
+        ],
+        "tags": [
+          {
+            "name": "@order",
+            "line": 1
+          },
+          {
+            "name": "@regression",
+            "line": 9
+          },
+          {
+            "name": "@smoke",
+            "line": 9
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "place-order",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Place order",
+    "tags": [
+      {
+        "name": "@order",
+        "line": 1
+      }
+    ],
+    "uri": "features/\border.feature"
+  }
+]

@@ -66,7 +66,6 @@ test.describe("mock api testing ", () => {
                         timeout:120000
                     }
                 );
-                // console.log("method is "+await request.method())
                 let body = Buffer.from(JSON.stringify(fakePayloadCount));
                 route.fulfill({
                     //pass all fields from the response
@@ -86,7 +85,6 @@ test.describe("mock api testing ", () => {
                     timeout:120000
                 }
             );
-            // console.log("method is "+await request.method())
             let body = Buffer.from(JSON.stringify(fakePayloadOrder));
             route.fulfill({
                 //pass all fields from the response
@@ -102,8 +100,6 @@ test.describe("mock api testing ", () => {
         await page.waitForLoadState("networkidle");
         await expect (page.getByText("#6262e95ae26b7e1a10e89bf0",{exact:true})).toBeVisible();
     
-
-
     }
     )
 })

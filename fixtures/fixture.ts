@@ -1,5 +1,7 @@
 import * as base from '@playwright/test'
 import * as cp from 'child_process'
+import * as BrowserStackLocal from 'browserstack-local'
+
 
 const clientPlaywrightVersion = cp
   .execSync('npx playwright --version')
@@ -7,7 +9,6 @@ const clientPlaywrightVersion = cp
   .trim()
   .split(' ')[1];
 
-import * as BrowserStackLocal from 'browserstack-local'
 
 var username = process.env.BROWSERSTACK_USERNAME;
 var accessKey = process.env.BROWSERSTACK_ACCESS_KEY;
