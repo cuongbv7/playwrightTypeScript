@@ -4,7 +4,6 @@ playwright/.cache/
 playwright/download/
 allure-results/
 allure-report/
-
 screenshots/
 .DS_Store
 
