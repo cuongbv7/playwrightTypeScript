@@ -46,8 +46,7 @@ test.describe("place order function",()=>{
     }
     )
 
-    test.afterEach(async ({page})=>{
-        
+    test.afterAll(async ({page})=>{
         page.close();
         
     })

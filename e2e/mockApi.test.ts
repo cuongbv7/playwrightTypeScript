@@ -7,12 +7,6 @@ import * as fakePayloadCount from "../data/fakePayloadCount.json"
 
 
 
-//const fakePayloadOrders = { data: [], message: "No Orders" };
-
-//const fakePayloadProductEmpty ={"message":"No Product in Cart"};
-
-
-
 
 test.describe("mock api testing ", () => {
 
