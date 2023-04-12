@@ -99,3 +99,4 @@ const baseTest = base.test.extend({
 });
 export const test = baseTest
 export const expect = base.expect;
+export const request = base.request;

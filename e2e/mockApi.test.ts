@@ -1,5 +1,6 @@
-import { test, expect, request } from "@playwright/test";
 import ApiUtils from "../utils/apiUtils";
+import {test,expect,request} from "../fixtures/pomFixture";
+
 
 
 
@@ -26,10 +27,12 @@ test.describe("mock api testing ", () => {
 
     let token: string;
 
-    test.beforeAll(async () => {
-        const apicontext = await request.newContext();
-        const apiRequest = new ApiUtils(apicontext);
+    test.beforeAll(async ({request}) => {
+        const apiRequest = new ApiUtils(request);
         token = await apiRequest.getToken(credentialInfor);
+    })
+    test.afterEach(async ({page}) => {
+        await page.close();
     })
 
     test("by pass login step ", async ({ page }) => {

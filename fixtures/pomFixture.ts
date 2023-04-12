@@ -1,4 +1,6 @@
 import { test as baseTest } from "./fixture";
+import { request as apiRequest } from "./fixture";
+
 
 import { checkOutPage } from "../pages/checkOutPage";
 import { homePage } from "../pages/homePage";
@@ -25,3 +27,4 @@ const pageManager = baseTest.extend<pages>({
 
 export const test = pageManager;
 export const expect = pageManager.expect;
+export const request = apiRequest;
