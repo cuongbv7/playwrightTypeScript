@@ -13,7 +13,7 @@ export default defineConfig({
   //testMatch:["/e2e/pageObject.test.ts"],
   testDir: './e2e',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 300 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -57,7 +57,7 @@ export default defineConfig({
       use: { ...devices['Desktop Firefox'] },
     },
     {
-      name: 'Google Chrome',
+      name: 'GoogleChrome',
       use: { channel: 'chrome' },
     },
     

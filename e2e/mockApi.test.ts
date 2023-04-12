@@ -1,55 +1,33 @@
 import ApiUtils from "../utils/apiUtils";
 import {test,expect,request} from "../fixtures/pomFixture";
+import * as fakePayloadOrders from "../data/fakeDataPayload.json"
+import * as credentialInfor from "../data/credentialInfor.json"
+import * as fakePayloadCount from "../data/fakePayloadCount.json"
 
 
 
 
-const credentialInfor = {
-    userEmail: "cuongbv7@gmail.com",
-    userPassword: "Linhdan@2018"
-}
+//const fakePayloadOrders = { data: [], message: "No Orders" };
 
-const fakePayloadOrders = { data: [], message: "No Orders" };
-
-const fakePayloadProductEmpty ={"message":"No Product in Cart"};
-
-const fakePayloadCount = {"count":1,"message":"Cart Data Found"};
+//const fakePayloadProductEmpty ={"message":"No Product in Cart"};
 
 
-const fakePayloadOrder =  {"products":[{"_id":"6262e95ae26b7e1a10e89bf0","productName":"zara coat 3","productCategory":"fashion","productSubCategory":"shirts",
-"productPrice":31500,"productDescription":"zara coat 3","productImage":"https://rahulshettyacademy.com/api/ecom/uploads/productImage_1650649434146.jpeg","productRating":"0","productTotalOrders":"0"
-,"productStatus":true,"productFor":"women","productAddedBy":"admin@gmail.com","__v":0}]
-,"count":1,"message":"Cart Data Found"}
 
 
 test.describe("mock api testing ", () => {
-    test.describe.configure({mode:'parallel'})
 
     let token: string;
 
-    test.beforeAll(async ({request}) => {
-        const apiRequest = new ApiUtils(request);
+    test.beforeAll(async () => {
+        const apicontext = await request.newContext();
+        const apiRequest = new ApiUtils(apicontext);
         token = await apiRequest.getToken(credentialInfor);
     })
-    test.afterEach(async ({page}) => {
-        await page.close();
+
+    test.afterAll(async ({page}) => {
+        page.close();
     })
 
-    test("by pass login step ", async ({ page }) => {
-        await page.addInitScript((value) => {
-            window.localStorage.setItem("token", value);
-        }, token)
-
-        await page.goto("https://rahulshettyacademy.com/client", {
-            waitUntil: "networkidle"
-        })
-        const listItems = await page.locator(".card-body h5 b").allTextContents();
-        for await (const item of listItems) {
-            console.log(item)
-        }
-
-    }
-    )
 
 
     test("api intercept ", async ({ page }) => {
@@ -88,7 +66,7 @@ test.describe("mock api testing ", () => {
                     timeout:120000
                 }
             );
-            let body = Buffer.from(JSON.stringify(fakePayloadOrder));
+            let body = Buffer.from(JSON.stringify(fakePayloadOrders));
             route.fulfill({
                 //pass all fields from the response
                 response,

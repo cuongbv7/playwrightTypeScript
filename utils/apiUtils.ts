@@ -1,9 +1,9 @@
-import { APIRequestContext } from "@playwright/test";
+import { APIRequestContext  } from "@playwright/test";
 import { userInfo } from "../model/userInfo";
 
 class ApiUtils {
 
-    private apiContext :APIRequestContext;
+    private apiContext : APIRequestContext;
 
     constructor ( context : APIRequestContext){
         this.apiContext = context;
@@ -11,6 +11,7 @@ class ApiUtils {
     }
 
     getToken= async(reqBody:userInfo)=>{
+        
         const loginResponse = await this.apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
             {
             data:reqBody
