@@ -18,10 +18,6 @@ test.describe("mock api testing ", () => {
         token = await apiRequest.getToken(credentialInfor);
     })
 
-    test.afterAll(async ({page}) => {
-        page.close();
-    })
-
 
 
     test("api intercept ", async ({ page }) => {
@@ -77,4 +73,10 @@ test.describe("mock api testing ", () => {
     
     }
     )
+
+    
+    test.afterAll(async ({page}) => {
+        page.close();
+    })
+
 })
