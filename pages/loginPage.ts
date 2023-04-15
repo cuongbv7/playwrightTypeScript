@@ -20,7 +20,7 @@ export class loginPage {
         await this.txtPassWord.fill(passWord);
         await Promise.all([
             this.loginButton.click(),
-            this.page.waitForURL("https://rahulshettyacademy.com/client/dashboard/dash",{
+            this.page.waitForURL("**\/client/dashboard/dash",{
                 waitUntil:"networkidle"
             })
         ])
