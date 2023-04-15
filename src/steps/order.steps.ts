@@ -8,6 +8,7 @@ let  selectedItems:Array<string>=[];
 
 
 When('Customer has selected below items in home page and checkout:', async function (this: ICustomWorld,items:DataTable) {
+    selectedItems=[];
     for await (const itemT of items.hashes() ){
         selectedItems.push(itemT.item)
     }

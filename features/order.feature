@@ -24,7 +24,7 @@ Feature: Place order
         |item     |
         |adidas original|
     And Shipping address is not fulfilled to checkout
-    Then A error message 'Please enter Full Shipping Information' should be displayed when user click to place order
+    Then A error message 'Please entering Full Shipping Information' should be displayed when user click to place order
 
     
   
