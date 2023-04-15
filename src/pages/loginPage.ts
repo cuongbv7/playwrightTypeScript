@@ -2,34 +2,27 @@ import { BrowserContext, Page, Locator } from "playwright";
 import { BasePage } from "./basePage";
 
 export class LoginPage extends BasePage {
-private readonly txtUserName: Locator;
-private readonly txtPassWord: Locator;
-private readonly loginButton: Locator;
+
+    private readonly txtUserName:Locator;
+    private readonly txtPassWord:Locator;
+    private readonly loginButton:Locator;
 
 constructor(page: Page, broserContext: BrowserContext) {
     super(page, broserContext);
-    this.txtUserName = page.locator("#username input");
-    this.txtPassWord = page.locator("#password input");
-    this.loginButton = page.locator("#login-btn");
+    this.txtUserName = page.getByPlaceholder('email@example.com');
+    this.txtPassWord = page.getByPlaceholder('enter your passsword');
+    this.loginButton = page.getByRole('button', { name: 'Login' });
 }
 
-async login(userName: string, passWord: string) {
-    await this.txtUserName
-    .type(userName)
-    .then(async () => await this.page.keyboard.press("Enter"));
-    await this.txtPassWord
-    .type(passWord)
-    .then(async () => await this.page.keyboard.press("Enter"));
+async login(userName:string,passWord:string) {
+    await this.txtUserName.fill(userName);
+    await this.txtPassWord.fill(passWord);
     await Promise.all([
-    this.loginButton.click(),
-    this.page.waitForURL("https://bstackdemo.com/?signin=true", {
-        waitUntil: "networkidle",
-        timeout:120000
-    }),
-    ]);
+        this.loginButton.click(),
+        this.page.waitForURL("**\/client/dashboard/dash",{
+            waitUntil:"networkidle"
+        })
+    ])
 }
 
-async getUserInfo(locator: Locator) {
-    return await locator.textContent();
-}
 }

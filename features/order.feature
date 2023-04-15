@@ -9,14 +9,13 @@ Feature: Place order
   @regression @smoke
   Scenario: Check order success when fullfill all informations in shipping address
     When Customer has selected below items in home page and checkout:
-        |item     |
-        |iPhone 12|
-        |iPhone 11|
-    And Shipping address is fulfilled with following informations:
-        |firstName|lastName |address |state  |postalCode|
-        |John     |Doe      |Ha Dong |Ha Noi | 10000    |  
-    Then Customer should able to click the submit button to place this order
-    And The order should be successfully placed with correct total price
+        |item           |
+        |zara coat 3    |
+        |adidas original|
+    And Shipping address is fulfilled with this information:
+        |country  |
+        |vietnam  |
+    Then Customer should able to place this order successfully
 
 
 @regression

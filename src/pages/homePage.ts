@@ -1,26 +1,35 @@
 import { BrowserContext,Page,Locator } from "playwright";
 import { BasePage } from "./basePage";
 import { CheckOutPage } from "./checkOutPage";
+import { MyCartPage } from "./myCartPage";
 
 export class HomePage extends BasePage {
     
-    public static  totalPrice:number=0;
+    public  totalPrice:number=0;
 
-    private  checkoutBtn:Locator;
+    private readonly checkoutBtn:Locator;
+    private readonly cartBtn:Locator;
     
     constructor (page:Page,browserContext:BrowserContext){
         super(page,browserContext);
         this.checkoutBtn =  page.getByText('Checkout');
+        this.cartBtn = page.getByRole("button",{
+            name:/.Cart./
+        })
 
     }
-
 
     async selectListItems (itemList:string[]){
         for await (const item of itemList){
             const price =  await this.selectItem(item);
-            HomePage.totalPrice+=  price;
+            this.totalPrice+=  price;
         }
         return this;
+    }
+
+    async gotoCart(){
+        await this.cartBtn.click();
+        return new MyCartPage(this.page,this.context);
     }
 
     async checkout(){
@@ -31,11 +40,15 @@ export class HomePage extends BasePage {
 
 
     private selectItem = async(item:string) => {
-        let itemName:string = "//img[@alt='"+item+"']/parent::div/following-sibling::div[text()='Add to cart']";
-        let price =  await this.page.locator("//img[@alt='"+item+ "']/parent::div/following-sibling::div[@class='shelf-item__price']/div[@class='val']/b").textContent();
+        //b[text()='zara coat 3']/parent::h5/following-sibling::button[text()=' Add To Cart']
+        ////b[text()='zara coat 3']/parent::h5/following-sibling::div/div
+        let itemName:string = "//b[text()='"+item+"']/parent::h5/following-sibling::button[text()=' Add To Cart']";
+        let price =  await this.page.locator("//b[text()='"+item+ "']/parent::h5/following-sibling::div/div").textContent();
         await this.page.locator(itemName).click();
-        return Number(price);
+        return Number(price?.replace("$ ",""));
     
-    } 
+} 
+
+    
 
 }
