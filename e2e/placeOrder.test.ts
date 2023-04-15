@@ -13,7 +13,7 @@ test.describe("place order function",()=>{
     })
 
     test('check out success', async ({page,homePage,checkOutPage,baseURL }) => {
- 
+
         let selectedItems:string[] = ["zara coat 3","adidas original"]
         await (await (await (await homePage.selectListItems(selectedItems)).gotoCart()).checkout()).selectCountry("vietnam");
         const [response] =  await Promise.all([
