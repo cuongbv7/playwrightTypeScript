@@ -20,12 +20,12 @@ test.describe("mock api testing ", () => {
 
 
 
-    test("api intercept ", async ({ page }) => {
+    test("api intercept ", async ({ page ,baseURL}) => {
         await page.addInitScript((value) => {
             window.localStorage.setItem("token", value);
         }, token)
 
-        await page.goto("https://rahulshettyacademy.com/client", {
+        await page.goto(baseURL+"/client", {
             waitUntil: "networkidle"
         })
 

@@ -39,7 +39,7 @@ export default defineConfig({
     headless:false,
     screenshot:"only-on-failure",
     video:"retain-on-failure",
-    baseURL:"https://bstackdemo.com",
+    baseURL:"https://rahulshettyacademy.com",
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 

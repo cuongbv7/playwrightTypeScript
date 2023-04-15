@@ -10,17 +10,17 @@ export class loginPage {
 
     constructor(page:Page){
         this.page = page;
-        this.txtUserName = page.locator("#username input");
-        this.txtPassWord = page.locator("#password input");
-        this.loginButton = page.locator("#login-btn");
+        this.txtUserName = page.getByPlaceholder('email@example.com');
+        this.txtPassWord = page.getByPlaceholder('enter your passsword');
+        this.loginButton = page.getByRole('button', { name: 'Login' });
     }
 
     async login(userName:string,passWord:string) {
-        await this.txtUserName.fill(userName).then(async()=> await this.page.keyboard.press("Enter"));
-        await this.txtPassWord.fill(passWord).then(async()=> await this.page.keyboard.press("Enter"));
+        await this.txtUserName.fill(userName);
+        await this.txtPassWord.fill(passWord);
         await Promise.all([
             this.loginButton.click(),
-            this.page.waitForURL("https://bstackdemo.com/?signin=true",{
+            this.page.waitForURL("https://rahulshettyacademy.com/client/dashboard/dash",{
                 waitUntil:"networkidle"
             })
         ])
