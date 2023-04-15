@@ -1,18 +1,19 @@
 import { ICustomWorld } from '../support/custom-world';
 import { DataTable, Then, When} from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
+import config from '../../config';
 
 
+let  selectedItems:Array<string>=[];
 
 
 When('Customer has selected below items in home page and checkout:', async function (this: ICustomWorld,items:DataTable) {
-    let selectedItems:Array<string>=[];
     for await (const itemT of items.hashes() ){
         selectedItems.push(itemT.item)
     }
 
     if (this.pagesObj!=undefined){
-        await (await (await (await this.pagesObj.homePage.selectListItems(selectedItems)).gotoCart()).checkout());
+        await (await (await this.pagesObj.homePage.selectListItems(selectedItems)).gotoCart()).checkout();
 
        // totalPriceActual = await (await (await this.pagesObj.homePage.selectListItems(selectedItems)).checkout()).getTotalPrice();
         //totalPriceExpected = this.pagesObj.homePage.totalPrice;
@@ -26,18 +27,18 @@ When('Shipping address is fulfilled with this information:', async function (thi
 });
 
 Then('Customer should able to place this order successfully', async function (this: ICustomWorld) {
-    const [request,response] = await Promise.all([
-        this.page?.waitForRequest(request => request.url() === 'https://bstackdemo.com/api/checkout',{
-            timeout:5000
-        }),
-        this.page?.waitForResponse(response => response.url() === 'https://bstackdemo.com/api/checkout',{
-            timeout:5000
-        }),
+    const [response] =  await Promise.all([
+        this.page?.waitForResponse(response => response.url()===config.baseUrl+'/api/ecom/order/create-order'&& response.ok(),{timeout:5000}),
+        this.page?.waitForRequest(request => request.url()===config.baseUrl+'/api/ecom/order/create-order'
+        && request.method()==='POST'),
         this.pagesObj?.checkoutPage.submit(),
     ])
-
-    expect(request?.method()==='POST').toEqual(true);
-    expect(response?.status()===200).toEqual(true);
+    let body ;
+    if(response!=undefined){
+        body = await response.json();
+    }
+    expect (body.message).toEqual("Order Placed Successfully");
+    expect(await this.page?.getByText(/Thankyou for the order./).isVisible()).toEqual(true);
 
 
 });
@@ -48,7 +49,7 @@ When('Shipping address is not fulfilled to checkout', async function (this: ICus
 });
 
 
-Then('Customer unable to click the submit button to place order', async function (this: ICustomWorld) {
-    expect(await this.page?.getByRole("button",{name:"Submit"}).isDisabled()).toEqual(true);
-
+Then('A error message {string} should be displayed when user click to place order', async function (this: ICustomWorld,errMsg:string) {
+    await this.pagesObj?.checkoutPage.submit();
+    expect(await this.page?.getByText(errMsg).isVisible()).toEqual(true);
 });

@@ -22,10 +22,9 @@ Feature: Place order
   Scenario: Check when click to place order without filling shipping address
     When Customer has selected below items in home page and checkout:
         |item     |
-        |iPhone 12|
-        |iPhone 11|
+        |adidas original|
     And Shipping address is not fulfilled to checkout
-    Then Customer unable to click the submit button to place order
+    Then A error message 'Please enter Full Shipping Information' should be displayed when user click to place order
 
     
   
