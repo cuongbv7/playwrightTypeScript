@@ -31,11 +31,11 @@ export class checkOutPage {
 
 
     async fillShippingAddressInformation(shipingAdress:ShippingAddressModel){
-        await this.firstName.fill(shipingAdress.firstName),
-        await this.lastName.fill(shipingAdress.lastName),
-        await this.address.fill(shipingAdress.address),
-        await this.state.fill(shipingAdress.state),
-        await this.postalCode.fill(shipingAdress.postalCode)
+        await this.firstName.fill(shipingAdress.firstName);
+        await this.lastName.fill(shipingAdress.lastName);
+        await this.address.fill(shipingAdress.address);
+        await this.state.fill(shipingAdress.state);
+        await this.postalCode.fill(shipingAdress.postalCode);
         return this;
     }
 
