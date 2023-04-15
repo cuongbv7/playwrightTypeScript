@@ -32,15 +32,10 @@ test.describe("mock api testing ", () => {
         await page.route("**/api/ecom/user/get-cart-count/*",
             async (route) => {
                 //fetch orifinal response
-                let response = await page.request.fetch(route.request(),
-                    {
-                        timeout:120000
-                    }
-                );
-                let body = Buffer.from(JSON.stringify(fakePayloadCount));
+                
+                let body =JSON.stringify(fakePayloadCount);
                 route.fulfill({
                     //pass all fields from the response
-                    response,
                     //override response body
                     body
 
@@ -51,15 +46,11 @@ test.describe("mock api testing ", () => {
         await page.route("**/api/ecom/user/get-cart-products/*",
         async (route) => {
             //fetch orifinal response
-            let response = await page.request.fetch(route.request(),
-                {
-                    timeout:120000
-                }
-            );
-            let body = Buffer.from(JSON.stringify(fakePayloadOrders));
+
+            let body = JSON.stringify(fakePayloadOrders);
             route.fulfill({
                 //pass all fields from the response
-                response,
+                
                 //override response body
                 body
 
@@ -69,7 +60,7 @@ test.describe("mock api testing ", () => {
 
         await page.locator("button[routerlink*='/dashboard/cart']").click();
         await page.waitForLoadState("networkidle");
-        await expect (page.getByText("#6262e95ae26b7e1a10e89bf0",{exact:true})).toBeVisible();
+        await expect (page.getByText("#"+fakePayloadOrders.products[0]._id,{exact:true})).toBeVisible();
     
     }
     )

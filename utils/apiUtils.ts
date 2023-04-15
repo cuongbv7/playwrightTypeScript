@@ -1,4 +1,4 @@
-import { APIRequestContext  } from "@playwright/test";
+import { APIRequestContext, APIResponse  } from "@playwright/test";
 import { userInfo } from "../model/userInfo";
 
 class ApiUtils {
@@ -12,7 +12,7 @@ class ApiUtils {
 
     getToken= async(reqBody:userInfo)=>{
         
-        const loginResponse = await this.apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
+        const loginResponse:APIResponse = await this.apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
             {
             data:reqBody
             }            

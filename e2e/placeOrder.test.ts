@@ -24,6 +24,7 @@ test.describe("place order function",()=>{
         let selectedItems:string[] = ["iPhone 12","iPhone 11"]
         await (await homePage.selectListItems(selectedItems)).checkout();
         await checkOutPage.fillShippingAddressInformation(shipAddress);
+        
         const [request] = await Promise.all([
             page.waitForRequest(request => request.url() === baseURL+'/api/checkout',{
                 timeout:5000
