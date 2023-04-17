@@ -15,9 +15,6 @@ When('Customer has selected below items in home page and checkout:', async funct
 
     if (this.pagesObj!=undefined){
         await (await (await this.pagesObj.homePage.selectListItems(selectedItems)).gotoCart()).checkout();
-
-       // totalPriceActual = await (await (await this.pagesObj.homePage.selectListItems(selectedItems)).checkout()).getTotalPrice();
-        //totalPriceExpected = this.pagesObj.homePage.totalPrice;
     }
 });
 
